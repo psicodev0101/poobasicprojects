@@ -11,12 +11,10 @@ public class NovoCadastroService {
 
     private final DatabaseLeao databaseLeao;
 
-//construtores ---------------------------------------------------------------
     public NovoCadastroService(DatabaseLeao databaseLeao) {
         this.databaseLeao = databaseLeao;
     }
 
-//métodos -----------------------------------------------------------------------------------------
     public void cadastrar(Contribuinte contribuinte) {
         contribuinte.taxa = gerarTaxa(contribuinte);
         databaseLeao.guardarContribuinte(contribuinte);
@@ -34,7 +32,5 @@ public class NovoCadastroService {
         }
         return resultado;
     }
-
-
 
 }

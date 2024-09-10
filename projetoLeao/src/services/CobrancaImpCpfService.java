@@ -8,7 +8,7 @@ public class CobrancaImpCpfService implements CobrancaImpService{
     @Override
     public double calcularImposto(Contribuinte contribuinte) {
         ContribuinteCpf contribuinteCpf = (ContribuinteCpf) contribuinte;
-        double imposto = 0.0;
+        double imposto;
         if (contribuinteCpf.rendaAnual < 2000) {
             imposto = 15D / 100 * contribuinte.rendaAnual;
         } else {
@@ -19,4 +19,5 @@ public class CobrancaImpCpfService implements CobrancaImpService{
         }
         return imposto;
     }
+
 }

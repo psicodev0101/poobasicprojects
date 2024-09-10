@@ -8,12 +8,9 @@ public class DatabaseLeao {
     private final ArrayList<ContribuinteCnpj> contribuintesCnpj = new ArrayList<>();
     private double impostometro;
 
-
-//getters e Setters ------------------------------------------------------------------------
     public ArrayList<ContribuinteCpf> getContribuintesCpf () {
         return contribuintesCpf;
     }
-
     public ArrayList<ContribuinteCnpj> getContribuintesCnpj () {
         return contribuintesCnpj;
     }
@@ -22,7 +19,6 @@ public class DatabaseLeao {
         return impostometro;
     }
 
-//metodos -----------------------------------------------------------------------------------
     public void calcularImpostometro () {
         double totalImpostometro = 0D;
         for (Contribuinte contribuinte : contribuintesCpf) {
@@ -31,8 +27,8 @@ public class DatabaseLeao {
         for (Contribuinte contribuinte : contribuintesCnpj) {
             totalImpostometro += contribuinte.taxa;
         }
-        System.out.println("----------------------------------------------------------------");
         impostometro = totalImpostometro;
+        System.out.println("----------------------------------------------------------------");
         System.out.printf("TOTAL DE ARRECADACOES NO IMPOSTOMETRO: %.2f", totalImpostometro);
     }
 
