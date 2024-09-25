@@ -22,7 +22,7 @@ public class NovoCadastroService {
         databaseLeao.guardarContribuinte(contribuinte);
     }
 
-    protected double gerarTaxa (Contribuinte contribuinte) {
+    public double gerarTaxa (Contribuinte contribuinte) {
         CobrancaImpService cobrancaImpService;
         double resultado = 0D;
         if (contribuinte instanceof ContribuinteCpf){
