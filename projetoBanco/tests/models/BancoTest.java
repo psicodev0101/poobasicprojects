@@ -1,7 +1,6 @@
 package models;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 class BancoTest {
     Banco bancoTest = new Banco();
@@ -28,6 +27,4 @@ class BancoTest {
         assertInstanceOf(ContaPoupanca.class, bancoTest.acessarConta(456));
     }
 
-
-  
 }

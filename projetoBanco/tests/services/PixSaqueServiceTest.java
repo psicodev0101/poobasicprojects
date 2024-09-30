@@ -29,10 +29,8 @@ class PixSaqueServiceTest {
     void confirmarSaqueCCTest() {
         contaCorrente.depositar(100);
 
-        //testando detecção de limite do cheque especial (100,00 saldo + 200,00 limite)
         assertFalse(pixSaqueService.confirmarSaqueCC(400, contaCorrente));
 
-        //testando saque funcional
         assertTrue(pixSaqueService.confirmarSaqueCC(300, contaCorrente));
     }
 
@@ -40,10 +38,8 @@ class PixSaqueServiceTest {
     void confirmarSaquePoupancaTest() {
         contaPoupanca.depositar(100);
 
-        //testando limite de negatividade de conta poupanca
         assertFalse(pixSaqueService.confirmarSaquePoupanca(400, contaPoupanca));
 
-        //testando saque funcional
         assertTrue(pixSaqueService.confirmarSaquePoupanca(100, contaPoupanca));
     }
 }
