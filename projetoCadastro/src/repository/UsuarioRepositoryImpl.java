@@ -2,8 +2,6 @@ package repository;
 
 import models.Usuario;
 
-import java.util.ArrayList;
-
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     /*optei aqui por nao usar um arraylist de usuarios como atributo,
@@ -12,13 +10,14 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     * método, garantindo que seja destruído em seguida*/
 
     @Override
-    public boolean addUsuario(Usuario usuario) {
-        return false;
+    public void addUsuario(Usuario usuario) {
+
+
+
     }
 
     @Override
-    public boolean removerUsuario(String cpf) {
-        return false;
+    public void removerUsuario(String cpf) {
     }
 
     @Override
