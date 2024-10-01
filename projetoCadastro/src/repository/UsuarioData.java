@@ -6,16 +6,16 @@ import java.util.ArrayList;
 
 public class UsuarioData {
 
-    public void gravar(String usuario) {
+    public static void gravar(String usuario) {
 
     }
 
-    public ArrayList<Usuario> listar(){
+    public static ArrayList<Usuario> listar(){
 
         return null;
     }
 
-    public void atualizarDataBase(){
+    public static void atualizarDataBase(ArrayList<Usuario> usuarios){
 
     }
 

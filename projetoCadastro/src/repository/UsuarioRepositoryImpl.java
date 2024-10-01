@@ -2,6 +2,8 @@ package repository;
 
 import models.Usuario;
 
+import java.util.ArrayList;
+
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     /*optei aqui por nao usar um arraylist de usuarios como atributo,
@@ -11,22 +13,48 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void addUsuario(Usuario usuario) {
-
-
-
+        String info = usuario.toString();
+        UsuarioData.gravar(info);
     }
 
     @Override
     public void removerUsuario(String cpf) {
+        ArrayList<Usuario> list = UsuarioData.listar();
+        int index = 0;
+        assert list != null;
+        for (Usuario usuario : list) {
+            if (usuario.getCpf().equals(cpf)) {
+                list.remove(index);
+            }
+            index++;
+        }
+        UsuarioData.atualizarDataBase(list);
     }
 
     @Override
     public Usuario buscarCpf(String cpf) {
-        return null;
+        ArrayList<Usuario> list = UsuarioData.listar();
+        Usuario usuarioEncontrado = null;
+        assert list != null;
+        for (Usuario usuario : list) {
+            if (usuario.getCpf().equals(cpf)) {
+                usuarioEncontrado = usuario;
+            }
+        }
+        if (usuarioEncontrado != null) {
+            return usuarioEncontrado;
+        } else {
+            System.out.println("ERRO: Nenhum registro encontrado.");
+            return null;
+        }
     }
 
     @Override
     public void listarUsuarios() {
-
+        ArrayList<Usuario> list = UsuarioData.listar();
+        assert list != null;
+        for (Usuario usuario : list) {
+            System.out.println(usuario);
+        }
     }
 }
