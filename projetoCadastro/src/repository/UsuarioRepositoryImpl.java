@@ -20,15 +20,18 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public void removerUsuario(String cpf) {
         ArrayList<Usuario> list = UsuarioData.listar();
-        int index = 0;
+
         assert list != null;
         for (Usuario usuario : list) {
             if (usuario.getCpf().equals(cpf)) {
-                list.remove(index);
+                list.remove(usuario);
             }
-            index++;
         }
         UsuarioData.atualizarDataBase(list);
+
+        /*esse metodo pode ser resumido atraves do metodo de List (Collections):
+        * list.removeIf(usuario -> usuario.getCpf().equals(cpf));
+        * */
     }
 
     @Override
