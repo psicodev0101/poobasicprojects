@@ -34,19 +34,14 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public Usuario buscarCpf(String cpf) {
         ArrayList<Usuario> list = UsuarioData.listar();
-        Usuario usuarioEncontrado = null;
         assert list != null;
         for (Usuario usuario : list) {
             if (usuario.getCpf().equals(cpf)) {
-                usuarioEncontrado = usuario;
+                return usuario;
             }
         }
-        if (usuarioEncontrado != null) {
-            return usuarioEncontrado;
-        } else {
-            System.out.println("ERRO: Nenhum registro encontrado.");
-            return null;
-        }
+        System.out.println("ERRO: Nenhum registro encontrado.");
+        return null;
     }
 
     @Override
