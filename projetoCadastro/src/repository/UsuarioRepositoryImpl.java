@@ -49,9 +49,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void listarUsuarios() {
-        ArrayList<Usuario> list = UsuarioData.listar();
-        assert list != null;
-        for (Usuario usuario : list) {
+        //ArrayList<Usuario> list = UsuarioData.listar();
+        //assert list != null;
+        /*comentei os comandos acima e passei o listar() direto pro foreach
+        * testar isso pra ver se o metodo nao vai acabar chamando a listagem
+        * repetidamente a cada iteração*/
+        assert UsuarioData.listar() != null;
+        for (Usuario usuario : UsuarioData.listar()) {
             System.out.println(usuario);
         }
     }
