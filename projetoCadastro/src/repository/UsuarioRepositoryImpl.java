@@ -3,6 +3,7 @@ package repository;
 import models.Usuario;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
@@ -19,7 +20,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void removerUsuario(String cpf) {
-        ArrayList<Usuario> list = UsuarioData.listar();
+        ArrayList<Usuario> list = null; // inserir aqui funçao que implementa usuarios;
 
         assert list != null;
         for (Usuario usuario : list) {
@@ -27,7 +28,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
                 list.remove(usuario);
             }
         }
-        UsuarioData.atualizarDataBase(list);
+        UsuarioData.sincronizarDataBase(list);
 
         /*esse metodo pode ser resumido atraves do metodo de List (Collections):
         * list.removeIf(usuario -> usuario.getCpf().equals(cpf));
@@ -36,7 +37,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public Usuario buscarCpf(String cpf) {
-        ArrayList<Usuario> list = UsuarioData.listar();
+        List<Usuario> list = carregarUsuarios();
         assert list != null;
         for (Usuario usuario : list) {
             if (usuario.getCpf().equals(cpf)) {
@@ -54,9 +55,24 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         /*comentei os comandos acima e passei o listar() direto pro foreach
         * testar isso pra ver se o metodo nao vai acabar chamando a listagem
         * repetidamente a cada iteração*/
-        assert UsuarioData.listar() != null;
-        for (Usuario usuario : UsuarioData.listar()) {
+        for (String usuario : UsuarioData.ler()) {
             System.out.println(usuario);
         }
     }
+
+    public List<Usuario> carregarUsuarios() {
+        List<String[]> tabela = UsuarioData.gerarTabela();
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+
+        for (String[] dados : tabela) {
+            String nome = dados[0];
+            String cpf = dados[1];
+            int idade = Integer.parseInt(dados[2]);
+            Usuario usuario = new Usuario(nome, cpf, idade);
+            usuarios.add(usuario);
+        }
+        return usuarios;
+    }
+
+
 }

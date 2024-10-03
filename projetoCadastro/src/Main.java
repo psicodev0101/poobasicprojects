@@ -6,7 +6,8 @@ public class Main {
         System.out.println(teste);
     }
 
-
+// estou criando usuarioRepository. Criei o metodo carregarUsuarios. Implementei
+    //os metodos gravar, ler e gerar tabela. verificar o que mais precisa alem disso
 
 }
 
