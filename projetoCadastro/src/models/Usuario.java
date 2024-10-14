@@ -14,7 +14,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return STR."\"\{nome}\";\"\{cpf}\";\"\{idade}\"";
+        return STR."\{nome};\{cpf};\{idade}";
     }
 
     public String getNome() {
