@@ -16,6 +16,8 @@ public class Main {
 
         users.listarUsuarios();
 
+        // tudo funcionando, agora so falta fazer os testes unitarios
+
     }
 
 
