@@ -14,7 +14,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return STR."\"\{cpf}\",\"\{nome}\",\"\{idade}\"";
+        return STR."\{nome};\{cpf};\{idade}";
     }
 
     public String getNome() {
@@ -39,5 +39,13 @@ public class Usuario {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public void getInfo(){
+        System.out.println("--------------------------------");
+        System.out.println("NOME: " + nome);
+        System.out.println("CPF: " + cpf);
+        System.out.println("IDADE: " + idade);
+        System.out.println("--------------------------------");
     }
 }
