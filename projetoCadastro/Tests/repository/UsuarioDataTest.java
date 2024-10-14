@@ -37,9 +37,9 @@ class UsuarioDataTest {
 
     @Test
     void gerarTabelaTest() {
-        String[] usuarioA = {"\"pedro\"", "\"12345678900\"", "\"18\""};
+        String[] usuarioA = {"pedro", "12345678900", "18"};
         assertEquals(Arrays.toString(usuarioA), Arrays.toString(UsuarioData.gerarTabela().get(0)));
-        String[] usuarioB = {"\"paulo\"", "\"12345678901\"", "\"19\""};
+        String[] usuarioB = {"paulo", "12345678901", "19"};
         assertEquals(Arrays.toString(usuarioB), Arrays.toString(UsuarioData.gerarTabela().get(1)));
     }
 
@@ -50,5 +50,8 @@ class UsuarioDataTest {
         usuarios.add(usuarioB);
 
         UsuarioData.sincronizarDataBase(usuarios);
+
+        assertEquals("[pedro, 12345678900, 18]", Arrays.toString(UsuarioData.gerarTabela().get(0)));
+        assertEquals("[paulo, 12345678901, 19]", Arrays.toString(UsuarioData.gerarTabela().get(1)));
     }
 }

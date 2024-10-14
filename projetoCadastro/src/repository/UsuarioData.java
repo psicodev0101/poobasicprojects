@@ -39,7 +39,8 @@ public class UsuarioData {
     public static List<String[]> gerarTabela () {
         return ler().stream() // Lê as linhas usando o método ler
                 .map(linha -> linha.split(";")) // Mapeia cada linha para um array
-                .collect(Collectors.toList()); // Coleta os arrays em uma lista
+                .collect(Collectors.toList()) // Coleta os arrays em uma lista
+        ;
     }
 
     public static void sincronizarDataBase(List<Usuario> usuarios){
