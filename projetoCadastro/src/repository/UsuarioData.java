@@ -22,6 +22,7 @@ public class UsuarioData {
     }
 
     public static List<String> ler() {
+    // retorna uma lista de linhas a partir do arquivo database.csv
         List<String> linhas = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(PATH))) {
@@ -33,10 +34,11 @@ public class UsuarioData {
             e.printStackTrace();
         }
 
-        return linhas; // Retorna a lista de linhas
+        return linhas;
     }
 
     public static List<String[]> gerarTabela () {
+    // gera uma matriz separando as informações recebidas pela leitura de linhas
         return ler().stream() // Lê as linhas usando o método ler
                 .map(linha -> linha.split(";")) // Mapeia cada linha para um array
                 .collect(Collectors.toList()) // Coleta os arrays em uma lista
@@ -44,6 +46,7 @@ public class UsuarioData {
     }
 
     public static void sincronizarDataBase(List<Usuario> usuarios){
+    //reescreve o conteudo do arquivo a partir da nova lista recebida
             try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(PATH))) {
                 for (Usuario usuario : usuarios) {
                     bufferedWriter.write(usuario.toString());

@@ -1,7 +1,6 @@
 package repository;
 
 import models.Usuario;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void listarUsuarios() {
-    //imprime uma lista de usuarios
+    //imprime uma lista detalhada de usuarios
         List<Usuario> list = carregarUsuarios();
 
         for (Usuario usuario : list) {
@@ -45,7 +44,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     private List<Usuario> carregarUsuarios() {
-    //implementa uma lista de usuarios a partir da tabela gerada por UsuarioData
+    /* implementa uma lista de usuarios a partir da tabela de Strings
+    * gerada por UsuarioData.gerarTabela */
+
         List<String[]> tabela = UsuarioData.gerarTabela();
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -58,6 +59,5 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         }
         return usuarios;
     }
-
 
 }
